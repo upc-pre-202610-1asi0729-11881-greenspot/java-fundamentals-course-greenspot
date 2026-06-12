@@ -29,7 +29,7 @@ java-rpg-course/
     ├── leccion5/
     │   └── Leccion5_POO.java                ← POO completa juego final
     ├── leccion5starter/
-    │   └── Leccion5_POO_STARTER.java        ← ✏archivo para completar
+    │   └── Leccion5_POO_STARTER.java        ← archivo para completar
     ├── leccion6/
     │   └── Leccion6_ProximosPasos.java      ← Cierre y retos
     └── main/
