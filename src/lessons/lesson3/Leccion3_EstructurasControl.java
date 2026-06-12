@@ -1,3 +1,6 @@
+package lessons.lesson3;
+
+
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  LECCIÓN 3: Estructuras de control (10 minutos)             ║
 // ╚══════════════════════════════════════════════════════════════╝
@@ -11,7 +14,7 @@
 //  ¿Qué es turno++?
 //  → Es igual a escribir: turno = turno + 1
 //
-//  🎮 AVANCE DEL JUEGO:
+//  AVANCE DEL JUEGO:
 //  Agregamos la lógica de turnos y decidimos quién gana.
 //  El daño ya es aleatorio usando Random.
 //
@@ -24,12 +27,10 @@ public class Leccion3_EstructurasControl {
 
         Random rand = new Random();
 
-        // Variables del héroe
         String nombreHeroe = "Kael";
         int vidaHeroe      = 120;
         int ataqueHeroe    = 18;
 
-        // Variables del enemigo
         String nombreEnemigo = "Dragón Oscuro";
         int vidaEnemigo      = 150;
         int ataqueEnemigo    = 14;
@@ -38,18 +39,15 @@ public class Leccion3_EstructurasControl {
 
         System.out.println("=== ¡QUE COMIENCE EL COMBATE! ===\n");
 
-        // --- while: el combate continúa mientras ambos tengan vida ---
         while (vidaHeroe > 0 && vidaEnemigo > 0) {
 
             System.out.println("--- Turno " + turno + " ---");
 
-            // El héroe ataca con daño aleatorio
             int danoHeroe = ataqueHeroe + rand.nextInt(6);
             vidaEnemigo   = vidaEnemigo - danoHeroe;
             System.out.println(nombreHeroe + " ataca por " + danoHeroe + " puntos!");
             System.out.println(nombreEnemigo + " le queda " + Math.max(0, vidaEnemigo) + " de vida.");
 
-            // El enemigo contraataca solo si sigue vivo
             if (vidaEnemigo > 0) {
                 int danoEnemigo = ataqueEnemigo + rand.nextInt(8);
                 vidaHeroe       = vidaHeroe - danoEnemigo;
@@ -61,7 +59,6 @@ public class Leccion3_EstructurasControl {
             turno++;
         }
 
-        // --- if/else: decidimos quién ganó ---
         System.out.println("=== FIN DEL COMBATE ===");
         if (vidaHeroe > 0) {
             System.out.println("¡VICTORIA! " + nombreHeroe + " ha ganado!");

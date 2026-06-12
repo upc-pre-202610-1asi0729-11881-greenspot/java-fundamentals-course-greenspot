@@ -1,3 +1,6 @@
+package lessons.lesson4;
+
+
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  LECCIÓN 4: Métodos, Entrada/Salida e Intro a POO (12 min)  ║
 // ╚══════════════════════════════════════════════════════════════╝
@@ -9,11 +12,7 @@
 //  ¿Qué es Scanner?
 //  → Una herramienta que lee lo que escribe el usuario.
 //
-//  Primera mirada a POO:
-//  → ¿Y si agrupamos variables + métodos en una sola clase?
-//  → Eso lo hacemos en la Lección 5.
-//
-//  🎮 AVANCE DEL JUEGO:
+//  AVANCE DEL JUEGO:
 //  Organizamos el ataque en métodos y el jugador elige su clase.
 //
 // ══════════════════════════════════════════════════════════════
@@ -25,7 +24,6 @@ public class Leccion4_Metodos {
 
     static Random rand = new Random();
 
-    // --- MÉTODO: atacar ---
     static void atacar(String atacante, String defensor, int ataque, int[] vidaDefensor) {
         int dano = ataque + rand.nextInt(6);
         vidaDefensor[0] = Math.max(0, vidaDefensor[0] - dano);
@@ -33,13 +31,11 @@ public class Leccion4_Metodos {
         System.out.println(defensor + " le queda " + vidaDefensor[0] + " de vida.");
     }
 
-    // --- MÉTODO: mostrarEstado ---
     static void mostrarEstado(String nombre, int vida, int vidaMax, int pociones) {
         System.out.println(nombre + " | Vida: " + vida + "/" + vidaMax +
-                           " | Pociones: " + pociones);
+                " | Pociones: " + pociones);
     }
 
-    // --- MÉTODO: usarPocion ---
     static int usarPocion(String nombre, int vida, int vidaMax, int[] pociones) {
         if (pociones[0] > 0) {
             int curacion = 30;
@@ -53,7 +49,6 @@ public class Leccion4_Metodos {
         return vida;
     }
 
-    // --- PROGRAMA PRINCIPAL ---
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -84,19 +79,18 @@ public class Leccion4_Metodos {
             pociones    = new int[]{3};
         }
 
-        int vidaMaxHeroe     = vidaHeroe;
-        int vidaEnemigo      = 150;
-        int ataqueEnemigo    = 14;
-        int[] pocionesRef    = pociones;
+        int vidaMaxHeroe  = vidaHeroe;
+        int vidaEnemigo   = 150;
+        int ataqueEnemigo = 14;
+        int[] pocionesRef = pociones;
+        int[] vidaEnemRef = {vidaEnemigo};
+        int[] vidaHerRef  = {vidaHeroe};
+        int turno         = 1;
 
         System.out.println("\n=== COMBATIENTES ===");
         mostrarEstado(nombre, vidaHeroe, vidaMaxHeroe, pocionesRef[0]);
         System.out.println("Dragón Oscuro | Vida: " + vidaEnemigo);
         System.out.println("\n¡Que comience el combate!\n");
-
-        int[] vidaEnemRef = {vidaEnemigo};
-        int[] vidaHerRef  = {vidaHeroe};
-        int turno         = 1;
 
         while (vidaHerRef[0] > 0 && vidaEnemRef[0] > 0) {
 

@@ -1,3 +1,6 @@
+package lessons.lesson5;
+
+
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  LECCIÓN 5: Fundamentos de POO y juego completo (15 min)    ║
 // ╚══════════════════════════════════════════════════════════════╝
@@ -8,10 +11,6 @@
 //  ✔ Herencia         — Guerrero, Mago y DragonOscuro extienden Personaje
 //  ✔ Polimorfismo     — cada clase tiene su propio atacar()
 //  ✔ Interfaces       — Habilidad obliga a definir una habilidad especial
-//
-//  🎮 JUEGO COMPLETO:
-//  El jugador elige su clase, usa habilidades especiales,
-//  pociones y se enfrenta al Dragón Oscuro.
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -46,22 +45,18 @@ abstract class Personaje {
         this.pociones   = pociones;
     }
 
-    // GETTERS
     public String getNombre()  { return nombre; }
     public int getVida()       { return vida; }
     public int getVidaMaxima() { return vidaMaxima; }
     public int getAtaque()     { return ataque; }
     public int getPociones()   { return pociones; }
 
-    // SETTER con validación
     public void setVida(int vida) {
         this.vida = Math.max(0, vida);
     }
 
-    // MÉTODO ABSTRACTO: cada subclase define su ataque
     public abstract void atacar(Personaje enemigo);
 
-    // MÉTODOS CONCRETOS
     public void usarPocion() {
         if (pociones > 0) {
             int curacion = 30;
@@ -69,7 +64,7 @@ abstract class Personaje {
             pociones--;
             System.out.println(getNombre() + " usa una poción y recupera " + curacion + " de vida!");
             System.out.println("Vida actual: " + getVida() + "/" + getVidaMaxima() +
-                               " | Pociones restantes: " + pociones);
+                    " | Pociones restantes: " + pociones);
         } else {
             System.out.println("¡No te quedan pociones!");
         }
@@ -77,7 +72,7 @@ abstract class Personaje {
 
     public void mostrarEstado() {
         System.out.println(getNombre() + " | Vida: " + getVida() + "/" + getVidaMaxima() +
-                           " | Ataque: " + getAtaque() + " | Pociones: " + getPociones());
+                " | Ataque: " + getAtaque() + " | Pociones: " + getPociones());
     }
 
     public boolean estaVivo() {
@@ -110,8 +105,8 @@ class Guerrero extends Personaje implements Habilidad {
     public void usarHabilidad(Personaje enemigo) {
         int dano = getAtaque() * 2;
         enemigo.setVida(enemigo.getVida() - dano);
-        System.out.println("⚔️  ¡GOLPE BRUTAL! " + getNombre() + " aplasta a " +
-                           enemigo.getNombre() + " por " + dano + " puntos!");
+        System.out.println("¡GOLPE BRUTAL! " + getNombre() + " aplasta a " +
+                enemigo.getNombre() + " por " + dano + " puntos!");
         if (enemigo.estaVivo()) {
             System.out.println(enemigo.getNombre() + " le queda " + enemigo.getVida() + " de vida.");
         } else {
@@ -137,7 +132,7 @@ class Mago extends Personaje implements Habilidad {
         int dano = getAtaque() + rand.nextInt(10);
         enemigo.setVida(enemigo.getVida() - dano);
         System.out.println(getNombre() + " lanza un rayo a " + enemigo.getNombre() +
-                           " por " + dano + " puntos de daño mágico!");
+                " por " + dano + " puntos de daño mágico!");
         if (enemigo.estaVivo()) {
             System.out.println(enemigo.getNombre() + " le queda " + enemigo.getVida() + " de vida.");
         } else {
@@ -149,8 +144,8 @@ class Mago extends Personaje implements Habilidad {
     public void usarHabilidad(Personaje enemigo) {
         int dano = 50;
         enemigo.setVida(enemigo.getVida() - dano);
-        System.out.println("🔥 ¡BOLA DE FUEGO! " + getNombre() + " destruye a " +
-                           enemigo.getNombre() + " con " + dano + " puntos de daño!");
+        System.out.println("¡BOLA DE FUEGO! " + getNombre() + " destruye a " +
+                enemigo.getNombre() + " con " + dano + " puntos de daño!");
         if (enemigo.estaVivo()) {
             System.out.println(enemigo.getNombre() + " le queda " + enemigo.getVida() + " de vida.");
         } else {
@@ -163,7 +158,7 @@ class Mago extends Personaje implements Habilidad {
 }
 
 // -------------------------------------------------------
-// SUBCLASE: DragonOscuro (el enemigo)
+// SUBCLASE: DragonOscuro
 // -------------------------------------------------------
 class DragonOscuro extends Personaje {
 
@@ -175,8 +170,8 @@ class DragonOscuro extends Personaje {
     public void atacar(Personaje enemigo) {
         int dano = getAtaque() + rand.nextInt(10);
         enemigo.setVida(enemigo.getVida() - dano);
-        System.out.println("🐉 El " + getNombre() + " escupe fuego sobre " +
-                           enemigo.getNombre() + " por " + dano + " puntos!");
+        System.out.println("El " + getNombre() + " escupe fuego sobre " +
+                enemigo.getNombre() + " por " + dano + " puntos!");
         if (enemigo.estaVivo()) {
             System.out.println(enemigo.getNombre() + " le queda " + enemigo.getVida() + " de vida.");
         } else {
@@ -233,7 +228,7 @@ public class Leccion5_POO {
             System.out.println("════════════════════════════");
             System.out.println("  Turno " + turno);
             System.out.println("  Tu vida: " + heroe.getVida() + "/" + heroe.getVidaMaxima() +
-                               " | Pociones: " + heroe.getPociones());
+                    " | Pociones: " + heroe.getPociones());
             System.out.println("  Vida enemigo: " + enemigo.getVida());
             System.out.println("════════════════════════════");
             System.out.println("¿Qué haces?");
@@ -278,11 +273,11 @@ public class Leccion5_POO {
 
         if (heroe.estaVivo()) {
             System.out.println("¡VICTORIA! " + heroe.getNombre() +
-                               " ha derrotado al " + enemigo.getNombre() + "!");
+                    " ha derrotado al " + enemigo.getNombre() + "!");
             System.out.println("Vida restante: " + heroe.getVida() + " | Turnos: " + (turno - 1));
         } else {
             System.out.println("DERROTA. El " + enemigo.getNombre() +
-                               " fue demasiado poderoso. ¡Inténtalo de nuevo!");
+                    " fue demasiado poderoso. ¡Inténtalo de nuevo!");
         }
 
         scanner.close();

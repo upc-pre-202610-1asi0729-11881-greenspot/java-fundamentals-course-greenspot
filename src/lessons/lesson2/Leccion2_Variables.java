@@ -1,3 +1,5 @@
+package lessons.lesson2;
+
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  LECCIÓN 2: Variables y tipos de datos (8 minutos)          ║
 // ╚══════════════════════════════════════════════════════════════╝
@@ -11,9 +13,8 @@
 //  → double  : números decimal  Ejemplo: 1.5
 //  → boolean : verdadero/falso  Ejemplo: true
 //
-//  🎮 AVANCE DEL JUEGO:
+//  AVANCE DEL JUEGO:
 //  Definimos las primeras variables del héroe y del enemigo.
-//  Estos son los datos que más adelante vivirán dentro de clases.
 //
 // ══════════════════════════════════════════════════════════════
 
@@ -21,11 +22,11 @@ public class Leccion2_Variables {
     public static void main(String[] args) {
 
         // --- Variables del héroe ---
-        String nombreHeroe  = "Kael";       // nombre del jugador
-        int vidaHeroe       = 120;          // puntos de vida
-        int ataqueHeroe     = 18;           // puntos de ataque
-        int pociones        = 3;            // pociones disponibles
-        boolean estaVivo    = true;         // ¿está vivo?
+        String nombreHeroe  = "Kael";
+        int vidaHeroe       = 120;
+        int ataqueHeroe     = 18;
+        int pociones        = 3;
+        boolean estaVivo    = true;
 
         // --- Variables del enemigo ---
         String nombreEnemigo = "Dragón Oscuro";
